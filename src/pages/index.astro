@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const allPosts = [
+  {
+    title: "Implementando Automação Industrial com ERP",
+    excerpt: "Descubra como integrar sistemas de automação com seu ERP para maximizar a eficiência operacional.",
+    category: "Automação",
+    date: "2024-02-22",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "implementar-erp-sucesso"
+  },
+  {
+    title: "Gestão de Estoque em Tempo Real",
+    excerpt: "Como utilizar tecnologias modernas para controle preciso de inventário industrial.",
+    category: "Gestão",
+    date: "2024-02-21",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "gestao-estoque-tempo-real"
+  },
+  {
+    title: "Análise de Dados na Indústria 4.0",
+    excerpt: "O papel do Big Data e Analytics na transformação digital da indústria moderna.",
+    category: "Tecnologia",
+    date: "2024-02-20",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "analise-dados-industria-4"
+  },
+  {
+    title: "Manutenção Preditiva com IoT",
+    excerpt: "Implementando sensores IoT para prever e prevenir falhas em equipamentos industriais.",
+    category: "IoT",
+    date: "2024-02-19",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "manutencao-preditiva-iot"
+  },
+  {
+    title: "Segurança em Sistemas ERP",
+    excerpt: "Melhores práticas para proteger dados sensíveis em ambientes industriais.",
+    category: "Segurança",
+    date: "2024-02-18",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "seguranca-sistemas-erp"
+  },
+  {
+    title: "Integração ERP e MES",
+    excerpt: "Como conectar sistemas ERP e MES para otimizar a produção industrial.",
+    category: "Integração",
+    date: "2024-02-17",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "integracao-erp-mes"
+  }
+];
+
+// Get page from URL params or default to 1
+const page = new URL(Astro.request.url).searchParams.get('page');
+const currentPage = page ? parseInt(page) : 1;
+
+// Pagination
+const postsPerPage = 3;
+const totalPages = Math.ceil(allPosts.length / postsPerPage);
+const startIndex = (currentPage - 1) * postsPerPage;
+const endIndex = startIndex + postsPerPage;
+const currentPosts = allPosts.slice(startIndex, endIndex);
+---
+
+<Layout title="Blog Kodiak ERP - Insights sobre Gestão Industrial">
+  <div class="space-y-12">
+    <!-- Featured Section -->
+    <section>
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Blog Kodiak ERP</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mb-8">
+        Insights, tendências e melhores práticas para otimizar sua gestão industrial com tecnologia de ponta.
+      </p>
+    </section>
+
+    <!-- Recent Posts Grid -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Posts Recentes</h2>
+      <div class="space-y-8">
+        {currentPosts.map(post => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="p-6 md:w-2/3">
+                <span class="text-sm font-medium text-blue-600">{post.category}</span>
+                <h3 class="text-xl font-semibold mt-2 mb-3">
+                  <a href={`/posts/${post.slug}`} class="text-gray-900 hover:text-blue-600">
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 mb-4">{post.excerpt}</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-500">
+                    {new Date(post.date).toLocaleDateString('pt-BR')}
+                  </span>
+                  <a href={`/posts/${post.slug}`} class="text-blue-600 hover:text-blue-800 font-medium">
+                    Ler mais →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <div class="flex justify-center items-center space-x-2">
+      <a 
+        href={`?page=${currentPage - 1}`}
+        class={`px-4 py-2 text-gray-600 bg-white rounded-lg border hover:bg-gray-50 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+      >
+        Anterior
+      </a>
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+        <a
+          href={`?page=${page}`}
+          class={`px-4 py-2 rounded-lg ${page === currentPage ? 'bg-blue-600 text-white' : 'text-gray-600 bg-white border hover:bg-gray-50'}`}
+        >
+          {page}
+        </a>
+      ))}
+      <a 
+        href={`?page=${currentPage + 1}`}
+        class={`px-4 py-2 text-gray-600 bg-white rounded-lg border hover:bg-gray-50 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+      >
+        Próximo
+      </a>
+    </div>
+  </div>
+</Layout>

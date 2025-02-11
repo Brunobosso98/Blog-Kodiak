@@ -1,0 +1,200 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Blog Kodiak ERP - Insights sobre Gestão Industrial" } = Astro.props;
+
+const popularPosts = [
+  {
+    title: "Como Implementar um ERP com Sucesso",
+    date: "2024-02-20",
+    url: "/posts/implementar-erp-sucesso"
+  },
+  {
+    title: "Tendências de Automação Industrial",
+    date: "2024-02-18",
+    url: "/posts/tendencias-automacao"
+  },
+  {
+    title: "Guia de Gestão de Produção",
+    date: "2024-02-15",
+    url: "/posts/guia-gestao-producao"
+  },
+  {
+    title: "Indústria 4.0 na Prática",
+    date: "2024-02-12",
+    url: "/posts/industria-4-pratica"
+  },
+  {
+    title: "Melhores Práticas em ERP",
+    date: "2024-02-10",
+    url: "/posts/melhores-praticas-erp"
+  }
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar -->
+        <aside class="lg:w-80 space-y-8">
+          <!-- Search Bar -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <form class="space-y-4">
+              <div class="relative">
+                <input
+                  type="search"
+                  placeholder="Buscar notícias..."
+                  class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+              </div>
+            </form>
+          </div>
+
+          <!-- Newsletter Signup -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Receba Nossas Notícias</h3>
+            <form class="space-y-4">
+              <input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <button
+                type="submit"
+                class="w-full py-3 px-4 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
+              >
+                Inscrever-se
+              </button>
+            </form>
+          </div>
+
+          <!-- Categories -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Categorias</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
+                  <span>Automação</span>
+                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
+                  <span>Gestão</span>
+                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">12</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
+                  <span>Tecnologia</span>
+                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">15</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
+                  <span>Indústria 4.0</span>
+                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">6</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Popular Posts -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Posts Populares</h3>
+            <ul class="space-y-4">
+              {popularPosts.map(post => (
+                <li>
+                  <a href={post.url} class="group">
+                    <h4 class="text-gray-900 group-hover:text-blue-600 font-medium mb-1">
+                      {post.title}
+                    </h4>
+                    <p class="text-sm text-gray-500">{post.date}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="lg:flex-1">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Sobre Nós</h3>
+            <p class="text-gray-400">
+              Soluções inteligentes para gestão industrial com o Kodiak ERP.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Links Úteis</h3>
+            <ul class="space-y-2">
+              <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
+              <li><a href="/casos-sucesso" class="text-gray-400 hover:text-white">Casos de Sucesso</a></li>
+              <li><a href="/recursos" class="text-gray-400 hover:text-white">Recursos</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Legal</h3>
+            <ul class="space-y-2">
+              <li><a href="/termos" class="text-gray-400 hover:text-white">Termos de Uso</a></li>
+              <li><a href="/privacidade" class="text-gray-400 hover:text-white">Política de Privacidade</a></li>
+              <li><a href="/cookies" class="text-gray-400 hover:text-white">Política de Cookies</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
+            <p class="text-gray-400 mb-4">Receba novidades e atualizações</p>
+            <form class="space-y-2">
+              <input
+                type="email"
+                placeholder="Seu e-mail"
+                class="w-full px-4 py-2 rounded text-gray-900"
+              />
+              <button
+                type="submit"
+                class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Assinar
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+          <p>&copy; 2024 Kodiak ERP. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+</style>
