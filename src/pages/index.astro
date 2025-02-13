@@ -93,7 +93,7 @@ const currentPosts = allPosts.slice(startIndex, endIndex);
               <p class="text-gray-600 mb-4">{post.excerpt}</p>
               <div class="flex items-center justify-between">
                 <span class="text-sm text-gray-500">{new Date(post.date).toLocaleDateString('pt-BR')}</span>
-                <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Ler mais →</a>
+                <a href={`/posts/${post.slug}`} class="text-blue-600 hover:text-blue-800 font-medium">Ler mais →</a>
               </div>
             </div>
           </article>
