@@ -49,22 +49,37 @@ const allPosts = [
     date: "2024-02-17",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
     slug: "integracao-erp-mes"
-  }
+  },
+  {
+    title: "Automatizando programas e ações",
+    excerpt: "Descubra como funciona a automatizaão de processos e programas para um aproveitamento melhor.",
+    category: "Automação",
+    date: "2024-02-21",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    slug: "gestao-estoque-tempo-real"
+  },
 ];
 
+// 1. Corrigir a tipagem do reduce
+const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
+  acc[post.category] = (acc[post.category] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
 // Get page from URL params or default to 1
-const page = new URL(Astro.request.url).searchParams.get('page');
-const currentPage = page ? parseInt(page) : 1;
+// const page = new URL(Astro.request.url).searchParams.get('page');
+// const currentPage = page ? parseInt(page) : 1;
 
 // Pagination
-const postsPerPage = 6;
-const totalPages = Math.ceil(allPosts.length / postsPerPage);
-const startIndex = (currentPage - 1) * postsPerPage;
-const endIndex = startIndex + postsPerPage;
-const currentPosts = allPosts.slice(startIndex, endIndex);
+// const postsPerPage = 6;
+// const totalPages = Math.ceil(allPosts.length / postsPerPage);
+// const startIndex = (currentPage - 1) * postsPerPage;
+// const endIndex = startIndex + postsPerPage;
+// const currentPosts = allPosts.slice(startIndex, endIndex);
 ---
 
-<Layout title="Blog Kodiak ERP - Insights sobre Gestão Industrial">
+<Layout title="Blog Kodiak ERP - Insights sobre Gestão Industrial"
+        categories={categoriesCount}>
   <div class="space-y-12">
     <!-- Featured Section -->
     <section>
@@ -79,16 +94,17 @@ const currentPosts = allPosts.slice(startIndex, endIndex);
     <!-- Recent Posts Grid -->
     <section>
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Posts Recentes</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {currentPosts.map(post => (
-           <article class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {allPosts.map(post => (
+          <article class="post bg-white rounded-lg shadow-md overflow-hidden"
+            data-category={post.category}>
             <img src={post.image} alt={post.title} class="w-full h-48 object-cover" />
             <div class="p-6">
               <span class="text-blue-600 text-sm font-medium">{post.category}</span>
               <h3 class="text-xl font-semibold mt-2 mb-3">
                 <a href={`/posts/${post.slug}`} class="text-gray-900 hover:text-blue-600">
-                    {post.title}
-                  </a>
+                  {post.title}
+                </a>
               </h3>
               <p class="text-gray-600 mb-4">{post.excerpt}</p>
               <div class="flex items-center justify-between">
@@ -102,7 +118,7 @@ const currentPosts = allPosts.slice(startIndex, endIndex);
     </section>
 
     <!-- Pagination -->
-    <div class="flex justify-center items-center space-x-2">
+    <!-- <div class="flex justify-center items-center space-x-2">
       <a 
         href={`?page=${currentPage - 1}`}
         class={`px-4 py-2 text-gray-600 bg-white rounded-lg border hover:bg-gray-50 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -123,6 +139,6 @@ const currentPosts = allPosts.slice(startIndex, endIndex);
       >
         Próximo
       </a>
-    </div>
+    </div> -->
   </div>
 </Layout>

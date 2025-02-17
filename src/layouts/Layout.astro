@@ -7,10 +7,15 @@ import "../styles/globals.css"
 interface Props {
   title: string;
   description?: string;
+  categories?: Record<string, number>; // 1. Adicionar tipo para categories
 }
 
-
-const { title, description = "Blog Kodiak ERP - Insights sobre Gestão Industrial" } = Astro.props;
+// 2. Corrigir a desestruturação para usar categories
+const { 
+  title, 
+  description = "Blog Kodiak ERP - Insights sobre Gestão Industrial", 
+  categories = {} 
+} = Astro.props;
 
 const popularPosts = [
   {
@@ -39,6 +44,7 @@ const popularPosts = [
     url: "/posts/melhores-praticas-erp"
   }
 ];
+
 ---
 
 <!doctype html>
@@ -95,31 +101,20 @@ const popularPosts = [
           <!-- Categories -->
           <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Categorias</h3>
-            <ul class="space-y-2">
+            <ul id="category-list" class="space-y-2">
               <li>
-                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
-                  <span>Automação</span>
-                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">8</span>
-                </a>
+                <button class="w-full category-filter text-gray-600 hover:text-blue-600" data-category="all">
+                  <span>Todos</span>
+                </button>
               </li>
-              <li>
-                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
-                  <span>Gestão</span>
-                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">12</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
-                  <span>Tecnologia</span>
-                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">15</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center justify-between text-gray-600 hover:text-blue-600">
-                  <span>Indústria 4.0</span>
-                  <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">6</span>
-                </a>
-              </li>
+              {Object.entries(categories).map(([category, count]) => (
+                <li class="flex items-center">
+                  <button class="category-filter w-full flex justify-between items-center text-gray-600 hover:text-blue-600" data-category={category}>
+                    <span>{category}</span>
+                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-sm">{count}</span>
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -207,3 +202,25 @@ const popularPosts = [
     scroll-behavior: smooth;
   }
 </style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll(".category-filter");
+    const posts = document.querySelectorAll(".post");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", function() {
+        const selectedCategory = this.getAttribute("data-category");
+
+        posts.forEach(post => {
+          const postCategory = post.getAttribute("data-category");
+          if (selectedCategory === "all" || postCategory === selectedCategory) {
+            post.style.display = "block";
+          } else {
+            post.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>
