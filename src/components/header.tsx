@@ -33,7 +33,7 @@ export function Header() {
     { name: "Implementação", href: "#implementation", sectionId: "implementation"},
     { name: "Módulos", href: "#modules", sectionId: "modules" },
     { name: "Benefícios", href: "#benefits", sectionId: "benefits" },
-    { name: "Blog", href: "#blog", sectionId: "#" },
+    { name: "Blog", href: "#blog", sectionId: "#", className: 'text-[#101075]' },
     { name: "Contato", href: "#contact", sectionId: "contact" },
   ];
 
@@ -59,9 +59,11 @@ export function Header() {
               href={item.href}
               className={cn(
                 "text-sm font-medium transition-colors duration-300",
-                activeSection === item.sectionId
-                  ? "text-[#1B1AFF] font-semibold"
-                  : "text-gray-700 hover:text-[#101075]"
+                item.name === "Blog" 
+                  ? "text-[#101075] font-semibold"
+                  : activeSection === item.sectionId
+                    ? "text-[#1B1AFF] font-semibold"
+                    : "text-gray-700 hover:text-[#101075]"
               )}
               onClick={(e) => {
                 e.preventDefault();
