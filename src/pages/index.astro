@@ -148,7 +148,7 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
       <h2 class="text-2xl font-bold text-gray-900 mb-6">Posts Recentes</h2>
       <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {allPosts.map(post => (
-          <article class="post bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-[1.02] transition-transform" data-category={post.category}>
+          <article class="post bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-[1.02] transition-transform" data-slug={post.slug} data-category={post.category}>
             <a href={`/posts/${post.slug}`} class="block">
               <img src={post.image} alt={post.title} class="w-full h-48 object-cover" />
               <div class="p-6">
@@ -215,7 +215,7 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
     likeButtons.forEach(async (button) => {
       const article = button.closest('article');
       if (article) {
-        const postSlug = article.querySelector('a')?.getAttribute('href')?.split('/').pop();
+        const postSlug = article.dataset.slug; // Usando data attribute para o slug
         if (postSlug) {
           try {
             const storedUser = localStorage.getItem('user');
@@ -238,6 +238,50 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
           }
         }
       }
+    });
+
+    // Adicionar evento de clique para os likes
+    likeButtons.forEach((button) => {
+      button.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const article = button.closest('article');
+        if (!article) return;
+
+        const postSlug = article.dataset.slug;
+        if (!postSlug) {
+          console.error('Post slug não encontrado');
+          return;
+        }
+
+        const storedUser = localStorage.getItem('user');
+        const userId = storedUser ? JSON.parse(storedUser).id : '';
+        if (!userId) {
+          alert('Você precisa estar logado para curtir um post');
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/likes', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId, postSlug }),
+          });
+
+          const data = await response.json();
+          if (data.success) {
+            const countElement = button.parentElement?.querySelector('.like-count');
+            if (countElement) {
+              countElement.textContent = data.likesCount.toString();
+            }
+            button.parentElement?.classList.toggle('text-red-500');
+          }
+        } catch (error) {
+          console.error('Erro ao processar like:', error);
+          alert('Erro ao processar sua curtida. Tente novamente.');
+        }
+      });
     });
 
     // Newsletter form submission
