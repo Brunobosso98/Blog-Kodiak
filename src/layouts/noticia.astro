@@ -1,8 +1,8 @@
 ---
-
 import { Header } from '../components/header';
-import { Footer } from '../components/footer'
-import "../styles/globals.css"
+import { Footer } from '../components/footer';
+import { ShareButtons } from '../components/ShareButtons.tsx'; // Importação do componente de compartilhamento
+import "../styles/globals.css";
 
 interface Props {
   title: string;
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description = "Blog Kodiak ERP - Insights sobre Gestão Industrial" } = Astro.props;
+const currentUrl = Astro.url.href; // Obtém a URL atual da notícia
 
 const popularPosts = [
   {
@@ -117,38 +118,23 @@ const popularPosts = [
         <!-- Main Content Area -->
         <main class="lg:flex-1">
           <slot />
-        </main>
-      </div>
-    </div>
-
-    <div class="flex items-center justify-between mb-8 border-b border-gray-200 pb-4">
-      <div class="flex items-center space-x-4">
-        <button id="like-button" class="flex items-center space-x-1 text-gray-500 hover:text-red-500 transition" data-slug={Astro.url.pathname.split('/').pop()}>
-          <i class="fas fa-heart"></i>
-          <span class="like-count text-sm">0</span>
-        </button>
         
-        <div class="relative">
-          <button id="share-button" class="text-gray-500 hover:text-gray-700 transition">
-            <i class="fas fa-share-alt"></i>
-          </button>
-          <div id="share-dropdown" class="hidden absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-            <div class="py-1" role="menu">
-              <button class="share-option w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center" onclick="shareOnTwitter()">
-                <i class="fab fa-twitter text-blue-400 mr-2"></i> Twitter
+          <!-- Botões de Curtida e Compartilhamento -->
+          <div class="flex items-center justify-between mt-8 border-t border-gray-200 pt-4">
+            <div class="flex items-center space-x-4">
+              <!-- Botão de Curtida -->
+              <button id="like-button" class="flex items-center space-x-1 text-gray-500 hover:text-red-500 transition" data-slug={Astro.url.pathname.split('/').pop()}>
+                <i class="fas fa-heart"></i>
+                <span class="like-count text-sm">0</span>
               </button>
-              <button class="share-option w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center" onclick="shareOnLinkedIn()">
-                <i class="fab fa-linkedin-in text-blue-700 mr-2"></i> LinkedIn
-              </button>
-              <button class="share-option w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center" onclick="shareOnWhatsApp()">
-                <i class="fab fa-whatsapp text-green-500 mr-2"></i> WhatsApp
-              </button>
-              <button class="share-option w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center" onclick="copyLink()">
-                <i class="fas fa-link text-gray-500 mr-2"></i> Copiar Link
-              </button>
+        
+              <!-- Botão de Compartilhamento -->
+              <ShareButtons url={currentUrl} title={title} />
+              </div>
             </div>
           </div>
-        </div>
+        </main>
+        
       </div>
     </div>
 
