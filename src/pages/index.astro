@@ -15,6 +15,15 @@ async function fetchNews() {
 
 const newsArticles = await fetchNews();
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD") // Remove acentos
+    .replace(/[\u0300-\u036f]/g, "") // Remove caracteres especiais
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
   acc[post.category] = (acc[post.category] || 0) + 1;
   return acc;
@@ -71,7 +80,7 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
             <p class="text-gray-600 text-sm line-clamp-3">{article.description}</p>
             <div class="flex justify-between items-center">
               <a
-                href={article.url}
+                href={`/posts/${slugify(article.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-blue-600 hover:text-blue-800 font-medium text-sm"
