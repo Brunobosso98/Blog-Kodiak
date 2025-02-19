@@ -164,12 +164,10 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
             </a>
             <div class="px-6 pb-6 flex justify-between items-center">
               <div class="flex items-center space-x-4">
-                <button class="flex items-center space-x-1 text-gray-500 hover:text-red-500 transition">
+                <button class="like-button flex items-center space-x-1 text-gray-500 hover:text-red-500 transition"
+                        data-slug={post.slug}>
                   <i class="fas fa-heart"></i>
                   <span class="like-count text-sm">0</span>
-                </button>
-                <button class="text-gray-500 hover:text-gray-700 transition">
-                  <i class="fas fa-share-alt"></i>
                 </button>
               </div>
               <ShareButtons client:load url={`${Astro.url.origin}/posts/${post.slug}`} title={post.title} />
@@ -207,80 +205,6 @@ const categoriesCount = allPosts.reduce((acc: Record<string, number>, post) => {
             post.style.display = postCategory === category ? 'block' : 'none';
           }
         });
-      });
-    });
-
-    // Initialize like counts
-    const likeButtons = document.querySelectorAll('.fa-heart');
-    likeButtons.forEach(async (button) => {
-      const article = button.closest('article');
-      if (article) {
-        const postSlug = article.dataset.slug; // Usando data attribute para o slug
-        if (postSlug) {
-          try {
-            const storedUser = localStorage.getItem('user');
-            const userId = storedUser ? JSON.parse(storedUser).id : '';
-            
-            const response = await fetch(`/api/likes?postSlug=${postSlug}&userId=${userId}`);
-            const data = await response.json();
-            
-            if (data.success) {
-              const countElement = button.parentElement?.querySelector('.like-count');
-              if (countElement) {
-                countElement.textContent = data.likesCount.toString();
-              }
-              if (data.isLiked) {
-                button.parentElement?.classList.add('text-red-500');
-              }
-            }
-          } catch (error) {
-            console.error('Error fetching like count:', error);
-          }
-        }
-      }
-    });
-
-    // Adicionar evento de clique para os likes
-    likeButtons.forEach((button) => {
-      button.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const article = button.closest('article');
-        if (!article) return;
-
-        const postSlug = article.dataset.slug;
-        if (!postSlug) {
-          console.error('Post slug não encontrado');
-          return;
-        }
-
-        const storedUser = localStorage.getItem('user');
-        const userId = storedUser ? JSON.parse(storedUser).id : '';
-        if (!userId) {
-          // alert('Você precisa estar logado para curtir um post');
-          // return;
-        }
-
-        try {
-          const response = await fetch('/api/likes', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ userId, postSlug }),
-          });
-
-          const data = await response.json();
-          if (data.success) {
-            const countElement = button.parentElement?.querySelector('.like-count');
-            if (countElement) {
-              countElement.textContent = data.likesCount.toString();
-            }
-            button.parentElement?.classList.toggle('text-red-500');
-          }
-        } catch (error) {
-          console.error('Erro ao processar like:', error);
-          alert('Erro ao processar sua curtida. Tente novamente.');
-        }
       });
     });
 

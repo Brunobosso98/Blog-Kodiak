@@ -1,16 +1,15 @@
 ---
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
-import { ShareButtons } from '../components/ShareButtons.tsx'; // Importação do componente de compartilhamento
+import { ShareButtons } from '../components/ShareButtons';
 import "../styles/globals.css";
 
 interface Props {
   title: string;
   description?: string;
 }
-
+const postSlug = Astro.url.pathname.split('/').pop();
 const { title, description = "Blog Kodiak ERP - Insights sobre Gestão Industrial" } = Astro.props;
-const currentUrl = Astro.url.href; // Obtém a URL atual da notícia
 
 const popularPosts = [
   {
@@ -123,14 +122,14 @@ const popularPosts = [
           <div class="flex items-center justify-between mt-8 border-t border-gray-200 pt-4">
             <div class="flex items-center space-x-4">
               <!-- Botão de Curtida -->
-              <button id="like-button" class="flex items-center space-x-1 text-gray-500 hover:text-red-500 transition" data-slug={Astro.url.pathname.split('/').pop()}>
+              <button id="like-button" class="mr-3 flex items-center space-x-1 text-gray-500 hover:text-red-500 transition" data-slug={Astro.url.pathname.split('/').pop()}>
                 <i class="fas fa-heart"></i>
                 <span class="like-count text-sm">0</span>
               </button>
         
               <!-- Botão de Compartilhamento -->
-              <ShareButtons url={currentUrl} title={title} />
-              </div>
+              <ShareButtons client:load url={`${Astro.url.origin}/posts/${postSlug}`} title="/" />
+            </div>
             </div>
           </div>
         </main>
@@ -145,24 +144,6 @@ const popularPosts = [
       const likeButton = document.getElementById('like-button');
       const postSlug = likeButton?.dataset.slug;
 
-      // Controle do dropdown de compartilhamento
-      const shareButton = document.getElementById('share-button');
-      const shareDropdown = document.getElementById('share-dropdown');
-      let isDropdownOpen = false;
-
-      shareButton?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        isDropdownOpen = !isDropdownOpen;
-        shareDropdown?.classList.toggle('hidden');
-      });
-
-      // Fechar dropdown ao clicar fora
-      document.addEventListener('click', (e) => {
-        if (isDropdownOpen && !shareDropdown?.contains(e.target as Node) && e.target !== shareButton) {
-          shareDropdown?.classList.add('hidden');
-          isDropdownOpen = false;
-        }
-      });
 
       async function initializeLikes() {
         if (!postSlug) return;
@@ -250,8 +231,6 @@ const popularPosts = [
         navigator.clipboard.writeText(window.location.href)
           .then(() => {
             alert('Link copiado para a área de transferência!');
-            shareDropdown?.classList.add('hidden');
-            isDropdownOpen = false;
           })
           .catch(err => console.error('Erro ao copiar link:', err));
       }
