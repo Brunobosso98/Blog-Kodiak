@@ -3,6 +3,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 const db = new Database('newsletter.db');
 
+// 📌 Criar tabelas se não existirem
+db.exec(`
+  CREATE TABLE IF NOT EXISTS users (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS likes (
+    id TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    post_slug TEXT NOT NULL,
+    UNIQUE(user_id, post_slug)
+  );
+
+  CREATE TABLE IF NOT EXISTS subscribers (
+    id TEXT PRIMARY KEY,
+    email TEXT UNIQUE NOT NULL
+  );
+`);
+
 // 📌 Tipos de Dados
 interface User {
   id: string;
@@ -27,8 +48,7 @@ interface Subscriber {
 const createUser = db.prepare(`
   INSERT INTO users (id, name, email) 
   VALUES (?, ?, ?)
-  ON CONFLICT(email) DO UPDATE SET 
-    name = excluded.name
+  ON CONFLICT(email) DO UPDATE SET name = excluded.name
 `);
 
 const findUser = db.prepare('SELECT * FROM users WHERE email = ?');
@@ -36,8 +56,7 @@ const findUser = db.prepare('SELECT * FROM users WHERE email = ?');
 const toggleLike = db.prepare(`
   INSERT INTO likes (id, user_id, post_slug)
   VALUES (?, ?, ?)
-  ON CONFLICT(user_id, post_slug) DO 
-    UPDATE SET id = id
+  ON CONFLICT(user_id, post_slug) DO NOTHING
 `);
 
 const getLikes = db.prepare(`
@@ -53,8 +72,7 @@ const hasUserLiked = db.prepare(`
 const saveSubscriber = db.prepare(`
   INSERT INTO subscribers (id, email)
   VALUES (?, ?)
-  ON CONFLICT(email) DO UPDATE SET 
-    id = id
+  ON CONFLICT(email) DO NOTHING
 `);
 
 // 📌 Criar ou buscar usuário
@@ -98,8 +116,9 @@ export function getPostLikes(postSlug: string, userId?: string) {
 
 // 📌 Adicionar um novo inscrito à newsletter
 export function addSubscriber(email: string): Subscriber {
-  saveSubscriber.run(uuidv4(), email);
-  return { id: uuidv4(), email };
+  const id = uuidv4();
+  saveSubscriber.run(id, email);
+  return { id, email };
 }
 
 export default db;
