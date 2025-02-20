@@ -8,9 +8,10 @@ const post = {
     name: "João Silva",
     role: "Especialista em Gestão Industrial",
     image: "https://i.pravatar.cc/150",
-    bio: "Com mais de 15 anos de experiência em implementação de sistemas ERP e otimização de processos industriais."
   },
   category: "Gestão",
+  urlToImage: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  description: "Com mais de 15 anos de experiência em implementação de sistemas ERP e otimização de processos industriais.",
   content: `
     <h2>Planejamento é Fundamental</h2>
     <p>A implementação bem-sucedida de um sistema ERP começa com um planejamento detalhado. É essencial envolver todas as partes interessadas desde o início do projeto.</p>
@@ -58,7 +59,7 @@ const post = {
           <div>
             <h3 class="font-medium text-gray-900">{post.author.name}</h3>
             <p class="text-sm text-gray-600">{post.author.role}</p>
-            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.description}</p>
           </div>
         </div>       
       </div>

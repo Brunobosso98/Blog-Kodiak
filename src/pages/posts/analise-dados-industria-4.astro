@@ -8,9 +8,10 @@ const post = {
     name: "Maria Santos",
     role: "Analista de Dados Industriais",
     image: "https://i.pravatar.cc/150?img=5",
-    bio: "Especialista em análise de dados e implementação de soluções de Business Intelligence para indústria."
   },
   category: "Tecnologia",
+  urlToImage: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  description: "Especialista em análise de dados e implementação de soluções de Business Intelligence para indústria.",
   content: `
     <h2>O Poder dos Dados na Transformação Digital</h2>
     <p>A Indústria 4.0 trouxe uma nova era de possibilidades para a análise de dados industriais, permitindo decisões mais precisas e estratégicas.</p>
@@ -61,7 +62,7 @@ const post = {
           <div>
             <h3 class="font-medium text-gray-900">{post.author.name}</h3>
             <p class="text-sm text-gray-600">{post.author.role}</p>
-            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.description}</p>
           </div>
         </div>
 
