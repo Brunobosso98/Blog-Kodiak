@@ -10,7 +10,6 @@ interface Props {
 }
 const postSlug = Astro.url.pathname.split('/').pop();
 const { title, description = "Blog Kodiak ERP - Insights sobre Gestão Industrial" } = Astro.props;
-const currentUrl = Astro.url.href; // Obtém a URL atual da notícia
 
 const popularPosts = [
   {
@@ -134,7 +133,6 @@ const popularPosts = [
             </div>
           </div>
         </main>
-        
         
       </div>
     </div>
