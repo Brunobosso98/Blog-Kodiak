@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const POSTS_DIR = "./src/pages/posts/"; // 📌 Apenas posts da API
+const POSTS_DIR = "./src/pages/posts/";
   
 // **Lendo os Posts Criados e Extraindo Dados**
 const Posts = fs
