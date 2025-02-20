@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, MessageCircle, Mail, MapPin, Phone, Clock } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -6,15 +6,19 @@ export function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0 space-y-3">
-            <a href="/" className="flex items-center">
-              <span className="self-center text-2xl font-semibold text-white">Kodiak</span>
+          <a href="/" className="flex items-center">
+              <img
+                src="/kodiakfooter.png"
+                alt="Kodiak Logo"
+                className="object-contain h-[50px] w-[200px]"
+              />
             </a>
             <p className="text-gray-200 max-w-md">
               Transformando a gestão industrial com soluções tecnológicas inovadoras para impulsionar o crescimento do seu negócio.
             </p>
             <div className="mt-8 flex space-x-6">
               <a
-                href="#"
+                href="https://www.facebook.com/conttrotechsistemas/"
                 className="text-gray-600 transition-colors duration-300 hover:text-blue-600"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -23,7 +27,7 @@ export function Footer() {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kodiakerp/"
                 className="text-gray-600 transition-colors duration-300 hover:text-blue-600"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -32,48 +36,44 @@ export function Footer() {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="#"
-                className="text-gray-600 transition-colors duration-300 hover:text-blue-600"
+                href="https://wa.me/5519989386246?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kodiak%20ERP."
+                className="text-gray-600 transition-colors duration-300 hover:text-[#25D366]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="sr-only">LinkedIn</span>
-                <Linkedin className="h-6 w-6" />
+                <span className="sr-only">WhatsApp</span>
+                <MessageCircle className="h-6 w-6" />
               </a>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">Soluções</h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-white">Navegação</h2>
               <ul className="text-gray-200 space-y-4">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">Financeiro</a>
+                  <a href="#" className="hover:text-white transition-colors">Clientes</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">Vendas</a>
+                  <a href="#" className="hover:text-white transition-colors">Benefícios</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">Logística</a>
+                  <a href="#" className="hover:text-white transition-colors">Módulos</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">Estoque</a>
+                  <a href="#" className="hover:text-white transition-colors">Contato</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">Empresa</h2>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-white">Informações</h2>
               <ul className="text-gray-200 space-y-4">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Sobre nós</a>
+                <li className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Rua da Imprensa, 189<br/>Itapira - SP</span>
                 </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Carreira</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Blog</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">Contato</a>
+                <li className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                    Seg à Sex: 07:15 - 17:30
                 </li>
               </ul>
             </div>
@@ -93,7 +93,7 @@ export function Footer() {
                   <span>São Paulo, SP</span>
                 </li>
               </ul>
-            </div>
+            </div>            
           </div>
         </div>
         <hr className="my-6 border-gray-200/20 sm:mx-auto" />
