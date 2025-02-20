@@ -8,8 +8,15 @@ interface Props {
   title: string;
   description?: string;
   categories?: Record<string, number>; // 1. Adicionar tipo para categories
+  categories?: Record<string, number>; // 1. Adicionar tipo para categories
 }
 
+// 2. Corrigir a desestruturação para usar categories
+const { 
+  title, 
+  description = "Blog Kodiak ERP - Insights sobre Gestão Industrial", 
+  categories = {} 
+} = Astro.props;
 // 2. Corrigir a desestruturação para usar categories
 const { 
   title, 
@@ -41,6 +48,7 @@ const popularPosts = [
 
 ];
 
+
 ---
 
 <!doctype html>
@@ -65,9 +73,11 @@ const popularPosts = [
           <!-- Search Bar -->
           <div class="bg-white rounded-lg shadow p-6">
             <form id="search-form" class="space-y-4">
+            <form id="search-form" class="space-y-4">
               <div class="relative">
                 <input
                   type="search"
+                  id="search-input"
                   id="search-input"
                   placeholder="Buscar notícias..."
                   class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -75,6 +85,9 @@ const popularPosts = [
                 <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
               </div>
             </form>
+            <div id="search-results" class="mt-4 space-y-4 hidden">
+              <!-- Results will be populated here -->
+            </div>
             <div id="search-results" class="mt-4 space-y-4 hidden">
               <!-- Results will be populated here -->
             </div>
