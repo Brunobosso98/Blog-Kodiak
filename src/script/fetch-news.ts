@@ -63,7 +63,7 @@ async function getFullArticle(url: string): Promise<string> {
 async function fetchNews() {
   try {
     const response = await axios.get<{ articles: Article[] }>(
-      `https://newsapi.org/v2/everything?q=(erp OR "enterprise resource planning" OR "industrial automation")&language=pt&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
+      `https://newsapi.org/v2/everything?q=(erp OR "enterprise resource planning" OR "industrial automation OR custos industricais OR otimização de processos OR gestão simplificada")&language=pt&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
     );
 
     const articles = response.data.articles
