@@ -15,8 +15,9 @@ export function Header() {
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + window.scrollY;
+        const sectionHeight = rect.height;
         const sectionId = section.getAttribute("id") || "";
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
@@ -33,7 +34,7 @@ export function Header() {
     { name: "Implementação", href: "https://kodiakerp.com.br/", sectionId: "implementation"},
     { name: "Módulos", href: "https://kodiakerp.com.br/", sectionId: "modules" },
     { name: "Benefícios", href: "https://kodiakerp.com.br/", sectionId: "benefits" },
-    { name: "Blog", href: "https://glob.kodiakerp.com.br/", sectionId: "#", className: 'text-[#101075]' },
+    { name: "Blog", href: "#blog", sectionId: "#", className: 'text-[#101075]' },
     { name: "Contato", href: "https://kodiakerp.com.br/", sectionId: "contact" },
   ];
 

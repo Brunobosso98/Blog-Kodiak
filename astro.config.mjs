@@ -7,5 +7,7 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   adapter: vercel(),
   integrations: [tailwind(), react(), mdx()],
-  output: 'server', // Habilita o modo servidor
+
+  // Habilita o modo servidor
+  output: 'server',
 });
