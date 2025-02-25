@@ -11,7 +11,7 @@ const NOOP_MIDDLEWARE_FN = async (_ctx, next) => {
 const ACTION_QUERY_PARAMS = {
   actionName: "_action"};
 
-const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SITE": undefined, "SSR": true};
+const __vite_import_meta_env__ = {"ASSETS_PREFIX": undefined, "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "PUBLIC_SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Z3V3aHRnbWN0Z25qb2huamtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA0OTEyMDYsImV4cCI6MjA1NjA2NzIwNn0.n6COIlA6R7t_TdeKmEft03A2OqNSr8YulIxXUobGXCA", "SITE": undefined, "SSR": true};
 const codeToStatusMap = {
   // Implemented from tRPC error code table
   // https://trpc.io/docs/server/error-handling#error-codes

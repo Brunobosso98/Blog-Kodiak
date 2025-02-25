@@ -1,4 +1,4 @@
-import { a as addSubscriber } from '../../chunks/database_BJ4PabdF.mjs';
+import { a as addSubscriber } from '../../chunks/database_BMdpV1hc.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const prerender = false;

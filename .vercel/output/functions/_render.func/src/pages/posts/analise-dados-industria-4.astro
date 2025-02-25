@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "Análise de Dados na Indústria 4.0",
+  date: "2024-02-20",
+  author: {
+    name: "Maria Santos",
+    role: "Analista de Dados Industriais",
+    image: "https://i.pravatar.cc/150?img=5",
+  },
+  category: "Tecnologia",
+  urlToImage: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  description: "Especialista em análise de dados e implementação de soluções de Business Intelligence para indústria.",
+  content: `
+    <h2>O Poder dos Dados na Transformação Digital</h2>
+    <p>A Indústria 4.0 trouxe uma nova era de possibilidades para a análise de dados industriais, permitindo decisões mais precisas e estratégicas.</p>
+
+    <h2>Principais Aplicações</h2>
+    <ul>
+      <li>Manutenção preditiva</li>
+      <li>Otimização de processos</li>
+      <li>Controle de qualidade</li>
+      <li>Previsão de demanda</li>
+      <li>Gestão energética</li>
+    </ul>
+
+    <h2>Ferramentas e Tecnologias</h2>
+    <p>Machine Learning, Big Data e Analytics são fundamentais para extrair insights valiosos dos dados industriais.</p>
+
+    <h2>Cases de Sucesso</h2>
+    <p>Empresas que implementaram análise avançada de dados reportam melhorias significativas em eficiência e redução de custos.</p>
+
+    <h2>Conclusão</h2>
+    <p>A análise de dados é um pilar fundamental da Indústria 4.0 e essencial para a competitividade industrial.</p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author.name}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.description}</p>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  </article>
+</Layout>

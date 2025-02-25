@@ -1,4 +1,4 @@
-import { g as getPostLikes, t as togglePostLike } from '../../chunks/database_BJ4PabdF.mjs';
+import { g as getPostLikes, t as togglePostLike } from '../../chunks/database_BMdpV1hc.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const prerender = false;
@@ -16,7 +16,7 @@ const GET = async ({ url }) => {
         { status: 400 }
       );
     }
-    const result = getPostLikes(postSlug, userId || void 0);
+    const result = await getPostLikes(postSlug, userId || void 0);
     return new Response(
       JSON.stringify({
         success: true,
@@ -49,7 +49,7 @@ const POST = async ({ request }) => {
         { status: 400 }
       );
     }
-    const result = togglePostLike(userId, postSlug);
+    const result = await togglePostLike(userId, postSlug);
     return new Response(
       JSON.stringify({
         success: true,

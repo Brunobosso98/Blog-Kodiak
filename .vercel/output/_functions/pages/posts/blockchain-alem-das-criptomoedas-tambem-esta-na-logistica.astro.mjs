@@ -1,7 +1,7 @@
 /* empty css                                          */
 import { c as createComponent, r as renderTemplate, e as renderComponent, m as maybeRenderHead, u as unescapeHTML, b as addAttribute } from '../../chunks/astro/server_BJVt15Gm.mjs';
 import 'kleur/colors';
-import { $ as $$Noticia } from '../../chunks/noticia_CyYCIqel.mjs';
+import { $ as $$Noticia } from '../../chunks/noticia_L7yVTedi.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$BlockchainAlemDasCriptomoedasTambemEstaNaLogistica = createComponent(($$result, $$props, $$slots) => {

@@ -1,7 +1,7 @@
 /* empty css                                          */
 import { c as createComponent, a as createAstro, r as renderTemplate, e as renderComponent, m as maybeRenderHead } from '../../chunks/astro/server_BJVt15Gm.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../../chunks/Layout_bsQcfNB5.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_D5h3PjwI.mjs';
 import Database from 'better-sqlite3';
 export { renderers } from '../../renderers.mjs';
 

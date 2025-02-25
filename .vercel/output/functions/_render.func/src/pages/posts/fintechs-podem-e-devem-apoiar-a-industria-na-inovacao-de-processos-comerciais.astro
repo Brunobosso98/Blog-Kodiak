@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "Fintechs podem (e devem!) apoiar a indústria na inovação de processos comerciais",
+  date: "2025-02-18",
+  author: {
+    name: "Convidado Especial",
+    role: "Jornalista",
+    image: "https://i.pravatar.cc/150",
+    bio: "Fonte: Startupi.com.br"
+  },
+  category: "Notícia",
+  urlToImage: "https://startupi.com.br/wp-content/uploads/2025/02/fintechs-1-1024x531.png",
+  description: "Startupi Fintechs podem (e devem!) apoiar a indústria na inovação de processos comerciais *Por Francisco Pereira Nos últimos anos, o setor industrial tem enfrentado desafios cada vez mais complexos para acompanhar o ritmo acelerado da transformação tecnológi…",
+  content: `
+    <body>
+<div class="main-wrap">
+    <div class="main ts-contain cf right-sidebar">
+        <div class="ts-row">
+            <div class="col-8 main-content s-post-contain">
+                <div class="the-post-header s-head-modern s-head-modern-a">
+                    <h1 class="is-title post-title">Fintechs podem (e devem!) apoiar a indústria na inovação de processos comerciais</h1>
+                    <div class="sub-title">
+                        <h2>Fintechs transformam processos comerciais na indústria, ampliam eficiência e criam novas oportunidades em um setor cada vez mais digital</h2>
+                    </div>
+                    <div class="post-meta-items meta-below has-author-img">
+                        <span class="meta-item post-author has-img"><span class="by">Por</span> Convidado Especial</span>
+                        <span class="meta-item date"><time class="post-date" datetime="2025-02-18T14:43:34-03:00">18/02/2025</time></span>
+                    </div>
+                </div>
+                <div class="single-featured">
+                    <div class="featured">
+                        <img loading="lazy" width="788" height="515" src="https://startupi.com.br/wp-content/uploads/2025/02/fintechs-1-1024x531.png" alt="fintechs" />
+                    </div>
+                </div>
+                <div class="the-post s-post-modern">
+                    <article id="post-253552" class="post-253552 post type-post status-publish format-standard">
+                        <div class="post-content-wrap has-share-float">
+                            <div class="post-content cf entry-content content-spacious">
+                                <p><strong><em>*Por Francisco Pereira</em></strong></p>
+                                <p>Nos últimos anos, o setor industrial tem enfrentado desafios cada vez mais complexos para acompanhar o ritmo acelerado da transformação tecnológica e as crescentes exigências do mercado. A inovação deixou de ser um diferencial competitivo para se tornar uma questão de sobrevivência.</p>
+                                <p>É nesse cenário que as fintechs surgem como parceiras estratégicas, capazes de revolucionar processos comerciais, aumentar a eficiência e destravar novas oportunidades no setor. Se antes a automação se limitava às linhas de produção, hoje ela se espalha por áreas críticas como vendas, finanças e gestão de cadeias de suprimentos. As fintechs, com sua agilidade e foco em inovação, trazem soluções financeiras que aceleram transações, otimizam o fluxo de caixa e tornam os processos comerciais mais inteligentes e conectados.</p>
+                                <p>O impacto dessas startups vai muito além dos serviços financeiros. Elas integram operações tecnológicas e corporativas, oferecendo plataformas robustas que atendem às demandas específicas das indústrias. O mercado global de fintech, que movimentou US$ 79,38 bilhões em 2023, deve atingir US$ 141,18 bilhões até 2028, segundo a Statista, e o Brasil é um exemplo de como essa tendência ganha força. Atualmente, mais de 1.470 fintechs atuam no país, representando 10% do total de startups brasileiras e refletindo o apetite do mercado por inovação em um setor onde margens apertadas e prazos rigor
+    <p><a href="https://startupi.com.br/fintechs-podem-apoiar-a-industria/" target="_blank">Leia a matéria completa</a></p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author || "Desconhecido"}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+          </div>
+        </div>       
+      </div>
+    </footer>
+  </article>
+</Layout>

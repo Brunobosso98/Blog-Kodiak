@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, r as renderTemplate, b as addAttribute, d as renderHead, e as renderComponent, f as renderSlot, g as renderScript } from './astro/server_BJVt15Gm.mjs';
 import 'kleur/colors';
-import { H as Header, F as Footer } from './footer_jb7FQCVo.mjs';
+import { H as Header, F as Footer } from './footer_D6imUcvi.mjs';
 import { S as ShareButtons } from './ShareButtons_DiRSLUap.mjs';
 /* empty css                               */
 /* empty css                                             */

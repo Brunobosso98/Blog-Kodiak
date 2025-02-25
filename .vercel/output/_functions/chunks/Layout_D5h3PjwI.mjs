@@ -1,6 +1,6 @@
 import { c as createComponent, a as createAstro, r as renderTemplate, g as renderScript, e as renderComponent, f as renderSlot, b as addAttribute, d as renderHead } from './astro/server_BJVt15Gm.mjs';
 import 'kleur/colors';
-import { F as Footer, H as Header } from './footer_jb7FQCVo.mjs';
+import { F as Footer, H as Header } from './footer_D6imUcvi.mjs';
 /* empty css                               */
 /* empty css                               */
 
