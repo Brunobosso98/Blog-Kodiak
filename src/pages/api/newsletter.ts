@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { addSubscriber } from '../../db/database';
+import { addSubscriber } from '../../lib/supabase';
 
 export const prerender = false;
 

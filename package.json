@@ -8,14 +8,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch-news": "tsx src/script/fetch-news.ts"
+    "fetch-news": "tsx src/script/fetch-news.ts",
+    "generate-posts": "tsx src/script/generate-posts.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/react": "^4.2.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^8.0.8",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@supabase/supabase-js": "^2.49.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
@@ -25,7 +28,6 @@
     "cheerio": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "dotenv": "^16.4.7",
-    "fs": "^0.0.1-security",
     "lucide-react": "^0.475.0",
     "openai": "^4.85.2",
     "react": "^19.0.0",
