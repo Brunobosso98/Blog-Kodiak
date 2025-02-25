@@ -1,7 +1,7 @@
 /* empty css                                          */
-import { c as createComponent, r as renderTemplate, e as renderComponent, m as maybeRenderHead, u as unescapeHTML, b as addAttribute } from '../../chunks/astro/server_BJVt15Gm.mjs';
+import { c as createComponent, d as renderComponent, g as renderTemplate, m as maybeRenderHead, u as unescapeHTML, b as addAttribute } from '../../chunks/astro/server_ukpE43jm.mjs';
 import 'kleur/colors';
-import { $ as $$Noticia } from '../../chunks/noticia_L7yVTedi.mjs';
+import { $ as $$Noticia } from '../../chunks/noticia_D7dO3wBl.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$AnaliseDadosIndustria4 = createComponent(($$result, $$props, $$slots) => {
