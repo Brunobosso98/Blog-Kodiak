@@ -87,7 +87,7 @@ export function Header() {
               Login
             </Button>
           </a>
-          <a href="https://wa.me/5519987111198?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kodiak%20ERP" target="_blank">
+          <a href="https://wa.me/5519989386246?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kodiak%20ERP" target="_blank">
           <Button 
             className="hidden md:inline-flex bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105"
           >
@@ -125,12 +125,16 @@ export function Header() {
                     {item.name}
                   </a>
                 ))}
+                <a target="_blank" href="https://conttrotech.autosky.cloud">
                 <Button variant="ghost" className="w-full justify-start hover:text-primary">
                   Login
                 </Button>
+                </a>
+                <a href="https://wa.me/5519989386246?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kodiak%20ERP" target="_blank">
                 <Button className="w-full bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105">
                   Solicitar Demo
                 </Button>
+                </a>
               </div>
             </SheetContent>
           </Sheet>

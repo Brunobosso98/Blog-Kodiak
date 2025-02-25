@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "Sistemas ERP evoluem para a adequação à Reforma Tributária",
+  date: "2025-02-21",
+  author: {
+    name: "Desconhecido",
+    role: "Jornalista",
+    image: "https://i.pravatar.cc/150",
+    bio: "Fonte: Dino.com.br"
+  },
+  category: "Notícia",
+  urlToImage: "https://s2-valor.glbimg.com/BPUFvWV9N1hGq38JK4fpPRXps6o=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/t/z/YAXRPeSuWtaL6tLqYKsw/af89671d-c3a5-493a-ba50-feccfe06e71b.jpg",
+  description: "Com a chegada do Imposto sobre Valor Agregado (IVA) em 2026, empresas correm contra o tempo para se ajustar às novas regras",
+  content: `
+    Conteúdo indisponível
+    <p><a href="https://www.dino.com.br/releases/sistemas-erp-evoluem-para-a-adequacao-a-reforma-tributaria-dino890311822131" target="_blank">Leia a matéria completa</a></p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author || "Desconhecido"}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+          </div>
+        </div>       
+      </div>
+    </footer>
+  </article>
+</Layout>

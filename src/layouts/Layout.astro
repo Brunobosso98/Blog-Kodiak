@@ -83,11 +83,13 @@ const popularPosts = [
           <!-- Newsletter Signup -->
           <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Receba Nossas Notícias</h3>
-            <form class="space-y-4">
+            <form id="newsletter-form" class="space-y-4">
               <input
                 type="email"
+                id="newsletter-email"
                 placeholder="Seu melhor e-mail"
                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                required
               />
               <button
                 type="submit"
@@ -96,11 +98,12 @@ const popularPosts = [
                 Inscrever-se
               </button>
             </form>
+            <p id="newsletter-message" class="mt-2 text-sm text-gray-600"></p>
           </div>
 
           <aside class="sticky top-20 space-y-6">
             <!-- Categories -->
-            <div class="bg-white rounded-lg shadow p-6">
+            <div class="hidden md:block bg-white rounded-lg shadow p-6">
               <h3 class="text-lg font-semibold text-gray-900 mb-4">Categorias</h3>
               <ul id="category-list" class="space-y-2">
                 <li>
@@ -441,6 +444,47 @@ async function likePost(likeButton: HTMLButtonElement, postSlug: string) {
       }
     });
   }
+
+  // Newsletter subscription functionality
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterEmail = document.getElementById('newsletter-email') as HTMLInputElement | null;
+const newsletterMessage = document.getElementById('newsletter-message');
+
+if (newsletterForm && newsletterEmail && newsletterMessage) {
+  newsletterForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const email = newsletterEmail.value.trim();
+    if (!email) {
+      newsletterMessage.textContent = 'Por favor, insira um e-mail válido.';
+      newsletterMessage.classList.add('text-red-600');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const result = await response.json();
+      newsletterMessage.textContent = result.message;
+
+      if (result.success) {
+        newsletterMessage.classList.add('text-green-600');
+        newsletterEmail.value = ''; // Limpa o campo após sucesso
+      } else {
+        newsletterMessage.classList.add('text-red-600');
+      }
+    } catch (error) {
+      console.error('Erro ao se inscrever na newsletter:', error);
+      newsletterMessage.textContent = 'Erro ao processar inscrição.';
+      newsletterMessage.classList.add('text-red-600');
+    }
+  });
+}
+
 </script>
 
 <script is:inline>
