@@ -22,8 +22,8 @@ export const GET: APIRoute = async ({ url }) => {
       );
     }
 
-    // Obtém os likes do post e verifica se o usuário curtiu
-    const result = getPostLikes(postSlug, userId || undefined);
+    // 🛠️ 🔹 Corrigido para usar `await` antes de chamar a função
+    const result = await getPostLikes(postSlug, userId || undefined);
 
     return new Response(
       JSON.stringify({
@@ -51,7 +51,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     console.log("POST request body:", { userId, postSlug });
 
-    // Verifica se os parâmetros obrigatórios foram enviados
     if (!userId || !postSlug) {
       console.error("Erro: userId ou postSlug estão ausentes.", { userId, postSlug });
       return new Response(
@@ -63,8 +62,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Alterna o like no post
-    const result = togglePostLike(userId, postSlug);
+    // 🛠️ 🔹 Corrigido para usar `await`
+    const result = await togglePostLike(userId, postSlug);
 
     return new Response(
       JSON.stringify({
