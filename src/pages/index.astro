@@ -7,7 +7,7 @@ import { allPosts } from "../data/posts.ts";
 async function fetchNews() {
   const API_KEY = import.meta.env.NEWS_API_KEY;
   const response = await fetch(
-    `https://newsapi.org/v2/everything?q=(erp OR "enterprise resource planning" OR "industrial automation")&language=pt&sortBy=publishedAt&apiKey=${API_KEY}`
+    `https://newsapi.org/v2/everything?q=(erp OR "enterprise resource planning" OR "industrial automation OR custos industricais OR otimização de processos OR gestão simplificada")&language=pt&sortBy=publishedAt&apiKey=${API_KEY}`
   );
   const data = await response.json();
   return data.articles?.slice(0, 3) || [];
