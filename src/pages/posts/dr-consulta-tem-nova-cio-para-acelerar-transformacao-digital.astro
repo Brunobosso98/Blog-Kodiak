@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "dr.consulta tem nova CIO para acelerar transformação digital",
+  date: "2025-02-25",
+  author: {
+    name: "Cecília Ferraz",
+    role: "Jornalista",
+    image: "https://i.pravatar.cc/150",
+    bio: "Fonte: Startupi.com.br"
+  },
+  category: "Notícia",
+  urlToImage: "https://startupi.com.br/wp-content/uploads/2025/02/arte-padrao-26-1024x531.png",
+  description: "Startupi dr.consulta tem nova CIO para acelerar transformação digital O dr.consulta, referência brasileira em saúde preventiva, reforça sua estratégia de inovação com a nomeação de Nancy Abe como nova Chief Information Officer (CIO). Sua chegada ocorre em um…",
+  content: `
+    <body>
+<div class="main-wrap">
+    <div class="main ts-contain cf right-sidebar">
+        <div class="ts-row">
+            <div class="col-8 main-content s-post-contain">
+                <h1 class="is-title post-title">dr.consulta tem nova CIO para acelerar transformação digital</h1>
+                <div class="post-meta post-meta-a post-meta-left post-meta-single has-below">
+                    <div class="post-meta-items meta-above">
+                        <span class="meta-item cat-labels">
+                            <a href="https://startupi.com.br/materias/" class="category term-color-82" rel="category">Matérias</a>
+                        </span>
+                    </div>
+                    <span class="meta-item post-author has-img">
+                        <span class="by">Por</span>
+                        <a href="https://startupi.com.br/autor/cecilia-ferraz/" title="Posts de Cecília Ferraz" rel="author">Cecília Ferraz</a>
+                    </span>
+                    <span class="meta-item date">
+                        <time class="post-date" datetime="2025-02-25T13:36:52-03:00">25/02/2025</time>
+                    </span>
+                    <span class="meta-item has-next-icon date-modified">
+                        <span class="updated-on">Atualizado em:</span>
+                        <time class="post-date" datetime="2025-02-25T13:36:55-03:00">25/02/2025</time>
+                    </span>
+                    <span class="meta-item read-time has-icon"><i class="tsi tsi-clock"></i>Leia em 2 minutos</span>
+                </div>
+                <div class="the-post s-post-modern">
+                    <article id="post-253673" class="post-253673 post type-post status-publish format-standard">
+                        <div class="post-content-wrap">
+                            <div class="post-content cf entry-content content-spacious">
+                                <p>O dr.consulta, referência brasileira em saúde preventiva, reforça sua estratégia de inovação com a nomeação de Nancy Abe como nova Chief Information Officer (CIO). Sua chegada ocorre em um momento estratégico, pois a empresa intensifica seus esforços para aprimorar processos internos e alavancar o Plano Diretor de TI, que visa transformar os pilares tecnológicos da companhia.</p>
+                                <p>Com mais de 30 anos de experiência em tecnologia da informação, a executiva traz um histórico robusto na liderança de equipes e na implementação de estratégias que alinham tecnologia e objetivos de negócio. Formada pela Universidade Mackenzie, Nancy Abe possui expertise em áreas como transformação digital, inteligência artificial, implantação de ERP e governança de TI.</p>
+                                <h2 class="wp-block-heading">Nova CIO do dr.consulta quer estruturar novos processos corporativos</h2>
+                                <p>Durante sua trajetória, a nova CIO atuou em organizações como Banco Cacique e Grupo Notredame Intermédica, além de contribuir no terceiro setor, onde desempenhou funções de liderança em projetos sociais. Membro do Grupo Mulheres CIOs do Brasil, Nancy também possui experiência como Conselheira Consultiva de TI em Saúde e formação para Conselheiros pelo IBGC.</p>
+                                <p>“Durante toda a minha carreira meu objetivo sempre foi atualizar o nível de maturidade em tecnologia das empresas, para isso é necessário liderar pessoas e obter engajamento para o alcance de metas. No dr.consulta não será diferente, estou animada para começar a estruturação de novos processos corporativos e entregar valor ao negócio através da tecnologia”, afirma a CIO.</p>
+                                <hr class="wp-block-separator"/>
+                                <p><strong>Aproveite e junte-se ao nosso canal no WhatsApp para receber conteúdos exclusivos em primeira mão. <a href="https://whatsapp.com/channel/0029VaEmWYkAInPksWbWE00Q" target="_blank" rel="noreferrer noopener">Clique aqui para participar</a>. Startupi | <a href="https://startupi.com.br/midia-kit/" target="_blank" rel="noreferrer noopener">Jornalismo para quem lidera inovação</a>!</strong></p>
+                            </div>
+                            <div class="the-post-tags">
+                                <a href="https://startupi.com.br/tags/destaques/" rel="tag">Destaques</a>
+                                <a href="https://startupi.com.br/tags/inovacao/" rel="tag">inovação</a>
+                                <a href="https://startupi.com.br/tags/mercado/" rel="tag">mercado</a>
+                                <a href="https://startupi.com.br/tags/
+    <p><a href="https://startupi.com.br/dr-consulta-nova-cio-transformacao-digital/" target="_blank">Leia a matéria completa</a></p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author || "Desconhecido"}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+          </div>
+        </div>       
+      </div>
+    </footer>
+  </article>
+</Layout>
