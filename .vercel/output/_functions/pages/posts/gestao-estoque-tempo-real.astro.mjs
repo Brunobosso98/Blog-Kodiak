@@ -1,7 +1,7 @@
 /* empty css                                          */
-import { c as createComponent, d as renderComponent, g as renderTemplate, m as maybeRenderHead, u as unescapeHTML, b as addAttribute } from '../../chunks/astro/server_ukpE43jm.mjs';
+import { c as createComponent, d as renderComponent, g as renderTemplate, m as maybeRenderHead, u as unescapeHTML, b as addAttribute } from '../../chunks/astro/server_DjrMRjR1.mjs';
 import 'kleur/colors';
-import { $ as $$Noticia } from '../../chunks/noticia_D7dO3wBl.mjs';
+import { $ as $$Noticia } from '../../chunks/noticia_6jiw1caS.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$GestaoEstoqueTempoReal = createComponent(($$result, $$props, $$slots) => {

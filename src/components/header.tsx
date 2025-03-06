@@ -1,6 +1,6 @@
 import { Button } from "./button";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import { Menu } from "lucide-react";
+import { HiMenu } from "react-icons/hi";
 import { useState, useEffect } from "react";
 import { cn } from '../lib/utils';
 
@@ -99,7 +99,7 @@ export function Header() {
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
+                <HiMenu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">

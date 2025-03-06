@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "Intelbras prevê estabilizar estoque e recuperar caixa a partir do 2º trimestre",
+  date: "2025-02-27",
+  author: {
+    name: "Desconhecido",
+    role: "Jornalista",
+    image: "https://i.pravatar.cc/150",
+    bio: "Fonte: Globo"
+  },
+  category: "Notícia",
+  urlToImage: "https://s2-valor.glbimg.com/88oW1-wIKjz6po3tBrns4bSW_vs=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2023/X/T/FwuphRQtGBfdWAv5A9dQ/158-eletroeletronica-altair-intelbras.jpg",
+  description: "“O caixa vai continuar um pouco mais baixo nos próximos meses, mas a tendência é de retomada”, disse o executivo-chefe (CEO) da Intelbras, Altair Silvestri",
+  content: `
+    Conteúdo indisponível
+    <p><a href="https://valor.globo.com/empresas/noticia/2025/02/27/intelbras-prev-estabilizar-estoque-e-recuperar-caixa-a-partir-do-2-trimestre.ghtml" target="_blank">Leia a matéria completa</a></p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author || "Desconhecido"}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+          </div>
+        </div>       
+      </div>
+    </footer>
+  </article>
+</Layout>

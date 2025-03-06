@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const POSTS_DIR = "./src/pages/posts/";
-const OUTPUT_FILE = "./src/pages/posts/posts.json";
+const OUTPUT_FILE = "./src/generated/posts.json";
 
 const Posts = fs
   .readdirSync(POSTS_DIR)

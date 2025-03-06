@@ -50,7 +50,7 @@ async function getFullArticle(url: string): Promise<string> {
         },
         { role: "user", content: data },
       ],
-      max_tokens: 700, // Ajuste para o tamanho do resumo desejado
+      max_tokens: 1000, // Ajuste para o tamanho do resumo desejado
     });
 
     return response.choices[0]?.message?.content || "Conteúdo indisponível";

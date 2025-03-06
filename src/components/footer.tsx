@@ -1,4 +1,4 @@
-import { Facebook, Instagram, MessageCircle, Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { IoLogoFacebook, IoLogoInstagram, IoChatbubbleEllipses, IoMail, IoLocationSharp, IoCall, IoTimeOutline } from 'react-icons/io5';
 
 export function Footer() {
   return (
@@ -24,7 +24,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
+                <IoLogoFacebook className="h-6 w-6" />
               </a>
               <a
                 href="https://www.instagram.com/kodiakerp/"
@@ -33,7 +33,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <span className="sr-only">Instagram</span>
-                <Instagram className="h-6 w-6" />
+                <IoLogoInstagram className="h-6 w-6" />
               </a>
               <a
                 href="https://wa.me/5519989386246?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Kodiak%20ERP."
@@ -42,7 +42,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <span className="sr-only">WhatsApp</span>
-                <MessageCircle className="h-6 w-6" />
+                <IoChatbubbleEllipses className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -68,11 +68,11 @@ export function Footer() {
             <h2 className="mb-6 text-sm font-semibold uppercase text-white">Informações</h2>
               <ul className="text-gray-200 space-y-4">
                 <li className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
+                  <IoLocationSharp className="h-4 w-4" />
                   <span>Rua da Imprensa, 189<br/>Itapira - SP</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
+                  <IoTimeOutline className="h-4 w-4" />
                     Seg à Sex: 07:15 - 17:30
                 </li>
               </ul>
@@ -81,15 +81,15 @@ export function Footer() {
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">Contato</h2>
               <ul className="text-gray-200 space-y-4">
                 <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
+                  <IoCall className="h-4 w-4" />
                   <span>(11) 9999-9999</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
+                  <IoMail className="h-4 w-4" />
                   <span>contato@kodiak.com.br</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
+                  <IoTimeOutline className="h-4 w-4" />
                   <span>São Paulo, SP</span>
                 </li>
               </ul>
