@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/noticia.astro';
+
+const post = {
+  title: "Uso da tecnologia deve moldar a gestão de trabalho em 2025",
+  date: "2025-02-28",
+  author: {
+    name: "Desconhecido",
+    role: "Jornalista",
+    image: "https://i.pravatar.cc/150",
+    bio: "Fonte: Dino.com.br"
+  },
+  category: "Notícia",
+  urlToImage: "https://s2-valor.glbimg.com/zZd0JlEnJLVeZEac3qPj9QVR7XI=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/G/5/FzsDA1QZSEnGaCB6fZRA/0ce24042-c6fc-4f70-9339-4c72257ae24a.jpg",
+  description: "Especialista da SISQUAL WFM aponta que as atuais mudanças organizacionais permitem que empresas aumentem sua diversidade e inclusão",
+  content: `
+    Conteúdo indisponível
+    <p><a href="https://www.dino.com.br/releases/uso-da-tecnologia-deve-moldar-a-gestao-de-trabalho-em-2025-dino890313184131" target="_blank">Leia a matéria completa</a></p>
+  `
+};
+---
+
+<Layout title={post.title}>
+  <article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+      <span class="text-sm font-medium text-blue-600">{post.category}</span>
+      <h1 class="text-3xl font-bold text-gray-900 mt-2 mb-4">{post.title}</h1>
+      <div class="flex items-center text-gray-600">
+        <span>{post.author || "Desconhecido"}</span>
+        <span class="mx-2">•</span>
+        <time>{new Date(post.date).toLocaleDateString('pt-BR')}</time>
+      </div>
+    </header>
+
+    <div class="prose prose-blue max-w-none" set:html={post.content} />
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img
+            src={post.author.image}
+            alt={post.author.name}
+            class="w-16 h-16 rounded-full"
+          />
+          <div>
+            <h3 class="font-medium text-gray-900">{post.author.name}</h3>
+            <p class="text-sm text-gray-600">{post.author.role}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.author.bio}</p>
+          </div>
+        </div>       
+      </div>
+    </footer>
+  </article>
+</Layout>

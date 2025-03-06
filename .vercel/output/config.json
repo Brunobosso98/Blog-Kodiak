@@ -1,83 +1,103 @@
 {
-	"version": 3,
-	"routes": [
-		{
-			"handle": "filesystem"
-		},
-		{
-			"src": "^/_astro/(.*)$",
-			"headers": {
-				"cache-control": "public, max-age=31536000, immutable"
-			},
-			"continue": true
-		},
-		{
-			"src": "^/_server-islands/([^/]+?)/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/_image/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/admin/subscribers/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/admin/subscribers/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/auth/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/likes/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/newsletter/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/search/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/analise-dados-industria-4/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/blockchain-alem-das-criptomoedas-tambem-esta-na-logistica/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/ferramentas-para-fazer-bpo-financeiro/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/fintechs-podem-e-devem-apoiar-a-industria-na-inovacao-de-processos-comerciais/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/gestao-estoque-tempo-real/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/implementar-erp-sucesso/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/sistemas-erp-evoluem-para-a-adequacao-a-reforma-tributaria/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/posts/venda-de-software-de-gestao-esta-longe-da-maturidade-e-inteligencia-artificial-muda-jogo-diz-ceo-da-totvs/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/$",
-			"dest": "_render"
-		}
-	]
+  "version": 3,
+  "routes": [
+    {
+      "handle": "error"
+    },
+    {
+      "status": 404,
+      "src": "^(?!/api).*$",
+      "dest": "/404.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/_astro/(.*)$",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/_server-islands/([^/]+?)/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/_image/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/admin/subscribers/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/api/admin/subscribers/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/api/auth/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/api/likes/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/api/newsletter/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/api/search/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/analise-dados-industria-4/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/blockchain-alem-das-criptomoedas-tambem-esta-na-logistica/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/ferramentas-para-fazer-bpo-financeiro/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/fintechs-podem-e-devem-apoiar-a-industria-na-inovacao-de-processos-comerciais/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/gestao-estoque-tempo-real/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/implementar-erp-sucesso/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/intelbras-preve-estabilizar-estoque-e-recuperar-caixa-a-partir-do-2-trimestre/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/sistemas-erp-evoluem-para-a-adequacao-a-reforma-tributaria/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/uso-da-tecnologia-deve-moldar-a-gestao-de-trabalho-em-2025/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/posts/venda-de-software-de-gestao-esta-longe-da-maturidade-e-inteligencia-artificial-muda-jogo-diz-ceo-da-totvs/?$",
+      "dest": "_render"
+    },
+    {
+      "src": "^/$",
+      "dest": "_render"
+    }
+  ],
+  "framework": {
+    "version": "5.4.2"
+  },
+  "crons": []
 }
